@@ -1,0 +1,1455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.5 on win32)" generated="20230925 11:30:31.556" rpa="false" schemaversion="4">
+<suite id="s1" name="Amazon01" source="D:\PythonProjects\pythonProject\Robot01_BryanLamb\UITests\Amazon01.robot">
+<test id="s1-t1" name="Tc01.User" line="6">
+<kw name="Open Browser and Amazon webpage" library="AmazonKeywords">
+<kw name="HeadlessChrome" library="Functions">
+<arg>${amazon_url}</arg>
+<doc>This method create chrome webdriver with spesific arguments which we implement</doc>
+<kw name="Set Chrome Options" library="Functions">
+<var>${chrome_options}</var>
+<doc>This method sets chrome arguments</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230925 11:30:31.924" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002D7D503A210&gt;</msg>
+<status status="PASS" starttime="20230925 11:30:31.924" endtime="20230925 11:30:31.924"/>
+</kw>
+<for flavor="IN">
+<var>${option}</var>
+<value>@{chrome_arguments}</value>
+<iter>
+<var name="${option}">--disable-infobars</var>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>${option}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20230925 11:30:31.925" endtime="20230925 11:30:31.925"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:31.924" endtime="20230925 11:30:31.925"/>
+</iter>
+<iter>
+<var name="${option}">--disable-gpu</var>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>${option}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20230925 11:30:31.925" endtime="20230925 11:30:31.925"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:31.925" endtime="20230925 11:30:31.925"/>
+</iter>
+<status status="PASS" starttime="20230925 11:30:31.924" endtime="20230925 11:30:31.925"/>
+</for>
+<msg timestamp="20230925 11:30:31.926" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002D7D503A210&gt;</msg>
+<status status="PASS" starttime="20230925 11:30:31.923" endtime="20230925 11:30:31.926"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_experimental_option</arg>
+<arg>detach</arg>
+<arg>${True}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20230925 11:30:31.926" endtime="20230925 11:30:31.926"/>
+</kw>
+<kw name="Create Webdriver" library="Selenium2Library">
+<arg>Chrome</arg>
+<arg>options=${chrome_options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20230925 11:30:31.926" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20230925 11:30:31.926" endtime="20230925 11:30:34.612"/>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20230925 11:30:34.612" level="INFO">Opening url 'https://www.amazon.com.tr'</msg>
+<status status="PASS" starttime="20230925 11:30:34.612" endtime="20230925 11:30:38.247"/>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230925 11:30:38.247" endtime="20230925 11:30:38.433"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230925 11:30:38.770" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-14.png"&gt;&lt;img src="selenium-screenshot-14.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230925 11:30:38.433" endtime="20230925 11:30:38.770"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:31.923" endtime="20230925 11:30:38.770"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${amazon_cookies}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:30:38.772" endtime="20230925 11:30:38.803"/>
+</kw>
+<msg timestamp="20230925 11:30:38.803" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:30:38.771" endtime="20230925 11:30:38.803"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:30:38.804" level="INFO">Clicking element 'xpath://*[@id="sp-cc-accept"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:38.804" endtime="20230925 11:30:38.914"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:38.804" endtime="20230925 11:30:38.914"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:38.803" endtime="20230925 11:30:38.914"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:38.803" endtime="20230925 11:30:38.914"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:38.771" endtime="20230925 11:30:38.914"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230925 11:30:41.915" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230925 11:30:38.914" endtime="20230925 11:30:41.915"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:31.923" endtime="20230925 11:30:41.915"/>
+</kw>
+<kw name="Login to website" library="AmazonKeywords">
+<kw name="Hover Mouse to Element on Page" library="Functions">
+<arg>${amazon_account}</arg>
+<doc>This method go and hover to element</doc>
+<kw name="Mouse Over" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20230925 11:30:41.916" level="INFO">Simulating Mouse Over on element 'xpath://*[@id="nav-link-accountList"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:41.916" endtime="20230925 11:30:42.215"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:41.916" endtime="20230925 11:30:42.215"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${amazon_signin}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:30:42.215" endtime="20230925 11:30:42.233"/>
+</kw>
+<msg timestamp="20230925 11:30:42.233" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:30:42.215" endtime="20230925 11:30:42.233"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:30:42.234" level="INFO">Clicking element 'xpath://*[@id="nav-flyout-ya-signin"]/a/span'.</msg>
+<status status="PASS" starttime="20230925 11:30:42.234" endtime="20230925 11:30:43.286"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:42.234" endtime="20230925 11:30:43.286"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:42.233" endtime="20230925 11:30:43.286"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:42.233" endtime="20230925 11:30:43.287"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:42.215" endtime="20230925 11:30:43.287"/>
+</kw>
+<kw name="Wait Element on the Page untill visible" library="Functions">
+<arg>${amazon_username_input}</arg>
+<arg>10</arg>
+<doc>This method make sure element is on page</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:30:43.308" level="INFO">Current page contains element 'xpath://*[@id="ap_email"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:43.288" endtime="20230925 11:30:43.308"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:43.287" endtime="20230925 11:30:43.308"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:43.287" endtime="20230925 11:30:43.308"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${amazon_username_input}</arg>
+<arg>${amazon_username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230925 11:30:43.309" level="INFO">Typing text '905461836617' into text field 'xpath://*[@id="ap_email"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:43.308" endtime="20230925 11:30:43.457"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${amazon_continue_button}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:30:43.458" endtime="20230925 11:30:43.474"/>
+</kw>
+<msg timestamp="20230925 11:30:43.474" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:30:43.458" endtime="20230925 11:30:43.474"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:30:43.477" level="INFO">Clicking element 'xpath://*[@id="continue"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:43.476" endtime="20230925 11:30:44.242"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:43.475" endtime="20230925 11:30:44.242"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:43.475" endtime="20230925 11:30:44.242"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:43.474" endtime="20230925 11:30:44.242"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:43.457" endtime="20230925 11:30:44.242"/>
+</kw>
+<kw name="Wait Element on the Page untill visible" library="Functions">
+<arg>${amazon_password_input}</arg>
+<arg>10</arg>
+<doc>This method make sure element is on page</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:30:44.260" level="INFO">Current page contains element 'xpath://*[@id="ap_password"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:44.243" endtime="20230925 11:30:44.260"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:44.243" endtime="20230925 11:30:44.260"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:44.242" endtime="20230925 11:30:44.261"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${amazon_password_input}</arg>
+<arg>${amazon_password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230925 11:30:44.261" level="INFO">Typing text 'WorldWideShop95' into text field 'xpath://*[@id="ap_password"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:44.261" endtime="20230925 11:30:44.375"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${amazon_login_button}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:30:44.377" endtime="20230925 11:30:44.392"/>
+</kw>
+<msg timestamp="20230925 11:30:44.392" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:30:44.376" endtime="20230925 11:30:44.392"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:30:44.394" level="INFO">Clicking element 'xpath://*[@id="signInSubmit"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:44.393" endtime="20230925 11:30:44.498"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:44.393" endtime="20230925 11:30:44.498"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:44.392" endtime="20230925 11:30:44.498"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:44.392" endtime="20230925 11:30:44.498"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:44.376" endtime="20230925 11:30:44.498"/>
+</kw>
+<kw name="Check Element have text on the page" library="Functions">
+<arg>${signin_check_byname}</arg>
+<arg>20</arg>
+<arg>Orhan</arg>
+<kw name="Wait Element on the Page untill visible" library="Functions">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<doc>This method make sure element is on page</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:30:47.312" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-15.png"&gt;&lt;img src="selenium-screenshot-15.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20230925 11:30:47.312" level="FAIL">Page should have contained element '//*[@id="nav-link-accountList-nav-line-1"]' but did not.</msg>
+<status status="FAIL" starttime="20230925 11:30:44.500" endtime="20230925 11:30:47.316"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:30:49.345" level="INFO">Current page contains element '//*[@id="nav-link-accountList-nav-line-1"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:49.316" endtime="20230925 11:30:49.345"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:44.499" endtime="20230925 11:30:49.345"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:44.499" endtime="20230925 11:30:49.345"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${value}</var>
+<arg>Element Should Contain</arg>
+<arg>${element}</arg>
+<arg>${expected_text}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Element Should Contain" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>${expected_text}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20230925 11:30:49.375" level="INFO">Element '//*[@id="nav-link-accountList-nav-line-1"]' contains text 'Orhan'.</msg>
+<status status="PASS" starttime="20230925 11:30:49.346" endtime="20230925 11:30:49.375"/>
+</kw>
+<msg timestamp="20230925 11:30:49.375" level="INFO">${status} = PASS</msg>
+<msg timestamp="20230925 11:30:49.375" level="INFO">${value} = None</msg>
+<status status="PASS" starttime="20230925 11:30:49.346" endtime="20230925 11:30:49.375"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}'=='PASS'</arg>
+<arg>Log To Console</arg>
+<arg>\n${expected_text} Is Located on Page</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>\nERROR-${expected_text}-ERROR</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log To Console" library="BuiltIn">
+<arg>\n${expected_text} Is Located on Page</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230925 11:30:49.375" endtime="20230925 11:30:49.376"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:49.375" endtime="20230925 11:30:49.376"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230925 11:30:49.670" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-16.png"&gt;&lt;img src="selenium-screenshot-16.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230925 11:30:49.376" endtime="20230925 11:30:49.670"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:44.499" endtime="20230925 11:30:49.670"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230925 11:30:50.671" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230925 11:30:49.670" endtime="20230925 11:30:50.671"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:41.915" endtime="20230925 11:30:50.671"/>
+</kw>
+<kw name="Search for products and select the last product" library="AmazonKeywords">
+<kw name="Wait Element on the Page untill visible" library="Functions">
+<arg>${search_input}</arg>
+<arg>10</arg>
+<doc>This method make sure element is on page</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:30:50.715" level="INFO">Current page contains element 'xpath://*[@id="twotabsearchtextbox"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:50.673" endtime="20230925 11:30:50.715"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:50.673" endtime="20230925 11:30:50.715"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:50.672" endtime="20230925 11:30:50.715"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${search_input}</arg>
+<arg>rtx4070 laptop</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230925 11:30:50.716" level="INFO">Typing text 'rtx4070 laptop' into text field 'xpath://*[@id="twotabsearchtextbox"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:50.715" endtime="20230925 11:30:50.921"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${search_button}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:30:50.922" endtime="20230925 11:30:50.941"/>
+</kw>
+<msg timestamp="20230925 11:30:50.941" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:30:50.921" endtime="20230925 11:30:50.941"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:30:50.944" level="INFO">Clicking element 'xpath://*[@id="nav-search-submit-button"]'.</msg>
+<status status="PASS" starttime="20230925 11:30:50.943" endtime="20230925 11:30:52.968"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:50.942" endtime="20230925 11:30:52.968"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:50.942" endtime="20230925 11:30:52.968"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:50.941" endtime="20230925 11:30:52.968"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:50.921" endtime="20230925 11:30:52.968"/>
+</kw>
+<kw name="Infinity Scroll Down" library="Functions">
+<arg>${last_item_on_the_firstPage}</arg>
+<doc>This method you can scroll down to element in lazy load pages</doc>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>6</value>
+<iter>
+<var name="${i}">0</var>
+<kw name="Element Should Be Visible" library="Selenium2Library">
+<var>${check}</var>
+<arg>${element}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20230925 11:30:53.077" level="INFO">Element 'xpath://div[@data-index and @data-component-id][last()]' is displayed.</msg>
+<msg timestamp="20230925 11:30:53.077" level="INFO">${check} = None</msg>
+<status status="PASS" starttime="20230925 11:30:52.970" endtime="20230925 11:30:53.077"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${check}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230925 11:30:53.077" endtime="20230925 11:30:53.078"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${check} != "None"</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<msg timestamp="20230925 11:30:53.078" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20230925 11:30:53.078" endtime="20230925 11:30:53.078"/>
+</kw>
+<kw name="Execute Javascript" library="Selenium2Library">
+<arg>window.scrollBy(0,1000)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="NOT RUN" starttime="20230925 11:30:53.078" endtime="20230925 11:30:53.078"/>
+</kw>
+<kw name="Scroll Element Into View" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="NOT RUN" starttime="20230925 11:30:53.079" endtime="20230925 11:30:53.079"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:52.969" endtime="20230925 11:30:53.079"/>
+</iter>
+<status status="PASS" starttime="20230925 11:30:52.969" endtime="20230925 11:30:53.079"/>
+</for>
+<status status="PASS" starttime="20230925 11:30:52.969" endtime="20230925 11:30:53.079"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230925 11:30:55.080" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230925 11:30:53.079" endtime="20230925 11:30:55.080"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${last_item_on_the_firstPage}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:30:55.081" endtime="20230925 11:30:55.114"/>
+</kw>
+<msg timestamp="20230925 11:30:55.114" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:30:55.081" endtime="20230925 11:30:55.114"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:30:55.117" level="INFO">Clicking element 'xpath://div[@data-index and @data-component-id][last()]'.</msg>
+<status status="PASS" starttime="20230925 11:30:55.116" endtime="20230925 11:31:00.084"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:55.115" endtime="20230925 11:31:00.084"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:55.115" endtime="20230925 11:31:00.084"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:55.114" endtime="20230925 11:31:00.084"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:55.080" endtime="20230925 11:31:00.085"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230925 11:31:02.086" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230925 11:31:00.085" endtime="20230925 11:31:02.086"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:50.672" endtime="20230925 11:31:02.086"/>
+</kw>
+<kw name="Add product to cart" library="AmazonKeywords">
+<kw name="Get Text From Locator" library="Functions">
+<var>${captured_text}</var>
+<arg>${product_name}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:02.089" endtime="20230925 11:31:02.118"/>
+</kw>
+<msg timestamp="20230925 11:31:02.118" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:02.089" endtime="20230925 11:31:02.118"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:31:02.134" level="INFO">Current page contains element 'xpath://span[@id='productTitle']'.</msg>
+<status status="PASS" starttime="20230925 11:31:02.119" endtime="20230925 11:31:02.134"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:02.118" endtime="20230925 11:31:02.134"/>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<var>${captured_text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:02.156" level="INFO">${captured_text} = Asus Tuf Gaming F15 FX506HC-HN442 Intel Core i5 11400H 16 GB 512 GB SSD RTX 3050 144 Hz Freedos 15.6 FHD Taşınabilir Bilgisayar</msg>
+<status status="PASS" starttime="20230925 11:31:02.134" endtime="20230925 11:31:02.156"/>
+</kw>
+<msg timestamp="20230925 11:31:02.156" level="INFO">${captured_text} = Asus Tuf Gaming F15 FX506HC-HN442 Intel Core i5 11400H 16 GB 512 GB SSD RTX 3050 144 Hz Freedos 15.6 FHD Taşınabilir Bilgisayar</msg>
+<status status="PASS" starttime="20230925 11:31:02.088" endtime="20230925 11:31:02.156"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${captured_text}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230925 11:31:02.156" level="INFO">${captured_text} = Asus Tuf Gaming F15 FX506HC-HN442 Intel Core i5 11400H 16 GB 512 GB SSD RTX 3050 144 Hz Freedos 15.6 FHD Taşınabilir Bilgisayar</msg>
+<status status="PASS" starttime="20230925 11:31:02.156" endtime="20230925 11:31:02.156"/>
+</kw>
+<kw name="Wait Element on the Page untill visible" library="Functions">
+<arg>${add_toCart}</arg>
+<arg>10</arg>
+<doc>This method make sure element is on page</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:31:02.173" level="INFO">Current page contains element 'xpath://*[@id="add-to-cart-button"]'.</msg>
+<status status="PASS" starttime="20230925 11:31:02.157" endtime="20230925 11:31:02.173"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:02.157" endtime="20230925 11:31:02.173"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:02.157" endtime="20230925 11:31:02.173"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${add_toCart}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:02.173" endtime="20230925 11:31:02.185"/>
+</kw>
+<msg timestamp="20230925 11:31:02.185" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:02.173" endtime="20230925 11:31:02.185"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:02.187" level="INFO">Clicking element 'xpath://*[@id="add-to-cart-button"]'.</msg>
+<status status="PASS" starttime="20230925 11:31:02.186" endtime="20230925 11:31:13.063"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:02.186" endtime="20230925 11:31:13.063"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:02.185" endtime="20230925 11:31:13.063"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:02.185" endtime="20230925 11:31:13.063"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:02.173" endtime="20230925 11:31:13.063"/>
+</kw>
+<kw name="Wait Element on the Page untill visible" library="Functions">
+<arg>${go_toCart}</arg>
+<arg>10</arg>
+<doc>This method make sure element is on page</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:31:13.085" level="INFO">Current page contains element 'xpath://*[@id="sw-gtc"]/span'.</msg>
+<status status="PASS" starttime="20230925 11:31:13.064" endtime="20230925 11:31:13.085"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:13.064" endtime="20230925 11:31:13.085"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:13.064" endtime="20230925 11:31:13.085"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${go_toCart}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:13.086" endtime="20230925 11:31:13.111"/>
+</kw>
+<msg timestamp="20230925 11:31:13.111" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:13.086" endtime="20230925 11:31:13.111"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:13.112" level="INFO">Clicking element 'xpath://*[@id="sw-gtc"]/span'.</msg>
+<status status="PASS" starttime="20230925 11:31:13.112" endtime="20230925 11:31:14.641"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:13.111" endtime="20230925 11:31:14.641"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:13.111" endtime="20230925 11:31:14.641"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:13.111" endtime="20230925 11:31:14.641"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:13.085" endtime="20230925 11:31:14.641"/>
+</kw>
+<kw name="Wait Element on the Page untill visible" library="Functions">
+<arg>${go_toPayment}</arg>
+<arg>10</arg>
+<doc>This method make sure element is on page</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:31:14.660" level="INFO">Current page contains element 'xpath://*[@id="sc-buy-box-ptc-button"]'.</msg>
+<status status="PASS" starttime="20230925 11:31:14.642" endtime="20230925 11:31:14.660"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:14.642" endtime="20230925 11:31:14.660"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:14.641" endtime="20230925 11:31:14.660"/>
+</kw>
+<kw name="Click Checkbox" library="Functions">
+<arg>${select_gift_checkbox}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:14.661" endtime="20230925 11:31:14.679"/>
+</kw>
+<msg timestamp="20230925 11:31:14.680" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:14.661" endtime="20230925 11:31:14.680"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Select Checkbox</arg>
+<arg>${element}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Select Checkbox" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Selects the checkbox identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:14.681" level="INFO">Selecting checkbox 'xpath://*[@id="sc-buy-box-gift-checkbox"]'.</msg>
+<status status="PASS" starttime="20230925 11:31:14.680" endtime="20230925 11:31:14.731"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:14.680" endtime="20230925 11:31:14.731"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:14.660" endtime="20230925 11:31:14.732"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${go_toPayment}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:14.732" endtime="20230925 11:31:14.745"/>
+</kw>
+<msg timestamp="20230925 11:31:14.745" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:14.732" endtime="20230925 11:31:14.745"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:14.747" level="INFO">Clicking element 'xpath://*[@id="sc-buy-box-ptc-button"]'.</msg>
+<status status="PASS" starttime="20230925 11:31:14.746" endtime="20230925 11:31:14.827"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:14.746" endtime="20230925 11:31:14.827"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:14.746" endtime="20230925 11:31:14.827"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:14.745" endtime="20230925 11:31:14.827"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:14.732" endtime="20230925 11:31:14.827"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:02.088" endtime="20230925 11:31:14.828"/>
+</kw>
+<kw name="See the product in cart page" library="AmazonKeywords">
+<kw name="Wait Element on the Page untill visible" library="Functions">
+<arg>${use_adress}</arg>
+<arg>10</arg>
+<doc>This method make sure element is on page</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:31:15.086" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-17.png"&gt;&lt;img src="selenium-screenshot-17.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20230925 11:31:15.086" level="FAIL">Page should have contained element 'xpath://*[@id="shipToThisAddressButton"]' but did not.</msg>
+<status status="FAIL" starttime="20230925 11:31:14.830" endtime="20230925 11:31:15.088"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:31:19.960" level="INFO">Current page contains element 'xpath://*[@id="shipToThisAddressButton"]'.</msg>
+<status status="PASS" starttime="20230925 11:31:17.088" endtime="20230925 11:31:19.960"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:14.829" endtime="20230925 11:31:19.961"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:14.829" endtime="20230925 11:31:19.961"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${use_adress}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:19.961" endtime="20230925 11:31:19.974"/>
+</kw>
+<msg timestamp="20230925 11:31:19.974" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:19.961" endtime="20230925 11:31:19.974"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:19.976" level="INFO">Clicking element 'xpath://*[@id="shipToThisAddressButton"]'.</msg>
+<status status="PASS" starttime="20230925 11:31:19.975" endtime="20230925 11:31:20.065"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:19.975" endtime="20230925 11:31:20.065"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:19.975" endtime="20230925 11:31:20.065"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:19.974" endtime="20230925 11:31:20.065"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:19.961" endtime="20230925 11:31:20.065"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230925 11:31:30.065" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20230925 11:31:20.065" endtime="20230925 11:31:30.065"/>
+</kw>
+<kw name="Check Input and Send Text" library="Functions">
+<arg>${gift_textArea}</arg>
+<arg>Thanks a lot for your service</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:30.065" endtime="20230925 11:31:30.083"/>
+</kw>
+<msg timestamp="20230925 11:31:30.083" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:30.065" endtime="20230925 11:31:30.083"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Input Text</arg>
+<arg>${element}</arg>
+<arg>${text}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>${text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:30.084" level="INFO">Typing text 'Thanks a lot for your service' into text field 'xpath://div/textarea'.</msg>
+<status status="PASS" starttime="20230925 11:31:30.083" endtime="20230925 11:31:30.355"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:30.083" endtime="20230925 11:31:30.355"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:30.065" endtime="20230925 11:31:30.355"/>
+</kw>
+<kw name="Click Checkbox" library="Functions">
+<arg>${use_gift_checkbox}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:30.356" endtime="20230925 11:31:30.375"/>
+</kw>
+<msg timestamp="20230925 11:31:30.375" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:30.356" endtime="20230925 11:31:30.375"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Select Checkbox</arg>
+<arg>${element}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Select Checkbox" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Selects the checkbox identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:30.376" level="INFO">Selecting checkbox 'xpath://*[starts-with(@id, "gift-wrap-checkbox-")]'.</msg>
+<status status="PASS" starttime="20230925 11:31:30.376" endtime="20230925 11:31:30.494"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:30.375" endtime="20230925 11:31:30.494"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:30.355" endtime="20230925 11:31:30.494"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${select_gift_goto_cardPayment}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:30.495" endtime="20230925 11:31:30.520"/>
+</kw>
+<msg timestamp="20230925 11:31:30.520" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:30.494" endtime="20230925 11:31:30.520"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:30.522" level="INFO">Clicking element 'xpath://span[@class='a-button a-button-primary chewbacca-enabled-save-gift-options-button primary-action-button']'.</msg>
+<status status="PASS" starttime="20230925 11:31:30.521" endtime="20230925 11:31:30.614"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:30.521" endtime="20230925 11:31:30.614"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:30.521" endtime="20230925 11:31:30.614"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:30.521" endtime="20230925 11:31:30.614"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:30.494" endtime="20230925 11:31:30.614"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230925 11:31:40.615" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20230925 11:31:30.614" endtime="20230925 11:31:40.615"/>
+</kw>
+<kw name="Wait Element on the Page untill visible" library="Functions">
+<arg>${select_creditCard}</arg>
+<arg>10</arg>
+<doc>This method make sure element is on page</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230925 11:31:40.650" level="INFO">Current page contains element 'xpath://*[starts-with(@id, 'pp-') and contains(@id, '-83')]'.</msg>
+<status status="PASS" starttime="20230925 11:31:40.617" endtime="20230925 11:31:40.650"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:40.616" endtime="20230925 11:31:40.650"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:40.615" endtime="20230925 11:31:40.650"/>
+</kw>
+<kw name="Select Radio Button" library="Selenium2Library">
+<arg>ppw-instrumentRowSelection</arg>
+<arg>instrumentId=0h_PE_CUS_63a584b4-5d70-4bd1-b35e-6546374c5c40&amp;isExpired=false&amp;paymentMethod=CC&amp;tfxEligible=false</arg>
+<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
+<msg timestamp="20230925 11:31:40.651" level="INFO">Selecting 'instrumentId=0h_PE_CUS_63a584b4-5d70-4bd1-b35e-6546374c5c40&amp;isExpired=false&amp;paymentMethod=CC&amp;tfxEligible=false' from radio button 'ppw-instrumentRowSelection'.</msg>
+<status status="PASS" starttime="20230925 11:31:40.651" endtime="20230925 11:31:40.755"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230925 11:31:42.756" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230925 11:31:40.756" endtime="20230925 11:31:42.756"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${accept_paymentCard}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:42.757" endtime="20230925 11:31:42.775"/>
+</kw>
+<msg timestamp="20230925 11:31:42.775" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:42.756" endtime="20230925 11:31:42.775"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:42.776" level="INFO">Clicking element 'xpath://*[starts-with(@id, "pp-") and contains(@id, "-97")]/span'.</msg>
+<status status="PASS" starttime="20230925 11:31:42.776" endtime="20230925 11:31:42.851"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:42.776" endtime="20230925 11:31:42.851"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:42.775" endtime="20230925 11:31:42.851"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:42.775" endtime="20230925 11:31:42.851"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:42.756" endtime="20230925 11:31:42.851"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230925 11:31:52.852" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20230925 11:31:42.851" endtime="20230925 11:31:52.852"/>
+</kw>
+<kw name="Get Input Text and Check" library="Functions">
+<arg>${order_alert}</arg>
+<arg>Sonraki siparişinizde alışverişinizi tamamlarken doğrudan bu adıma geçerek zaman kazanmak ister misiniz?</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:52.853" endtime="20230925 11:31:52.874"/>
+</kw>
+<msg timestamp="20230925 11:31:52.874" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:52.853" endtime="20230925 11:31:52.874"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Element Text Should Be</arg>
+<arg>${element}</arg>
+<arg>${text}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Element Text Should Be" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>${text}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20230925 11:31:52.875" level="INFO">Verifying element 'xpath://div[@aria-live='polite']/div/h4' contains exact text 'Sonraki siparişinizde alışverişinizi tamamlarken doğrudan bu adıma geçerek zaman kazanmak ister misiniz?'.</msg>
+<status status="PASS" starttime="20230925 11:31:52.874" endtime="20230925 11:31:52.902"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:52.874" endtime="20230925 11:31:52.902"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:52.852" endtime="20230925 11:31:52.902"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:14.828" endtime="20230925 11:31:52.902"/>
+</kw>
+<kw name="Go back and remove products from cart" library="AmazonKeywords">
+<kw name="Click Element on page" library="Functions">
+<arg>${products}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:52.904" endtime="20230925 11:31:52.921"/>
+</kw>
+<msg timestamp="20230925 11:31:52.921" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:52.904" endtime="20230925 11:31:52.921"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:52.922" level="INFO">Clicking element 'xpath://span[@class='a-color-link clickable-heading']'.</msg>
+<status status="PASS" starttime="20230925 11:31:52.922" endtime="20230925 11:31:53.007"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:52.922" endtime="20230925 11:31:53.007"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:52.922" endtime="20230925 11:31:53.007"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:52.921" endtime="20230925 11:31:53.008"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:52.903" endtime="20230925 11:31:53.008"/>
+</kw>
+<kw name="Click Element on page" library="Functions">
+<arg>${return_products_carts}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Page Contains Element</arg>
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>timeout=10</arg>
+<arg>error=false</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230925 11:31:53.009" endtime="20230925 11:31:53.028"/>
+</kw>
+<msg timestamp="20230925 11:31:53.028" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20230925 11:31:53.009" endtime="20230925 11:31:53.028"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click The Element</arg>
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click the Element" library="Functions">
+<arg>${element}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:53.028" level="INFO">Clicking element 'xpath://a[@href="https://www.amazon.com.tr/gp/cart/view.html/ref=chk_cart_link_return_to_cart"]'.</msg>
+<status status="PASS" starttime="20230925 11:31:53.028" endtime="20230925 11:31:53.979"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:53.028" endtime="20230925 11:31:53.980"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:53.028" endtime="20230925 11:31:53.980"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:53.028" endtime="20230925 11:31:53.980"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:53.008" endtime="20230925 11:31:53.980"/>
+</kw>
+<kw name="Select From List By Text" library="Functions">
+<var>${index}</var>
+<arg>${product_names}</arg>
+<arg>${captured_text}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${index}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230925 11:31:53.981" level="INFO">${index} = 1</msg>
+<status status="PASS" starttime="20230925 11:31:53.981" endtime="20230925 11:31:53.981"/>
+</kw>
+<kw name="Get WebElements" library="Selenium2Library">
+<var>@{shop_products}</var>
+<arg>${products}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20230925 11:31:54.019" level="INFO">@{shop_products} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="89aa81d25a031b1955c5fc1810713585", element="4C4D4028E983F119377ED8A9A41A199D_element_729")&gt; | &lt;selenium.webdriver.remote.webelement.WebElem...</msg>
+<status status="PASS" starttime="20230925 11:31:53.981" endtime="20230925 11:31:54.019"/>
+</kw>
+<for flavor="IN">
+<var>${product}</var>
+<value>@{shop_products}</value>
+<iter>
+<var name="${product}">&lt;selenium.webdriver.remote.webelement.WebElement (session="89aa81d25a031b1955c5fc1810713585", element="4C4D4028E983F119377ED8A9A41A199D_element_729")&gt;</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${product.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230925 11:31:54.020" endtime="20230925 11:31:54.034"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${check}</var>
+<arg>Element Should Contain</arg>
+<arg>${product}</arg>
+<arg>${text}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Element Should Contain" library="Selenium2Library">
+<arg>${product}</arg>
+<arg>${text}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20230925 11:31:54.050" level="INFO">Element '&lt;selenium.webdriver.remote.webelement.WebElement (session="89aa81d25a031b1955c5fc1810713585", element="4C4D4028E983F119377ED8A9A41A199D_element_729")&gt;' contains text 'Asus Tuf Gaming F15 FX506HC-HN442 Intel Core i5 11400H 16 GB 512 GB SSD RTX 3050 144 Hz Freedos 15.6 FHD Taşınabilir Bilgisayar'.</msg>
+<status status="PASS" starttime="20230925 11:31:54.034" endtime="20230925 11:31:54.050"/>
+</kw>
+<msg timestamp="20230925 11:31:54.050" level="INFO">${check} = True</msg>
+<status status="PASS" starttime="20230925 11:31:54.034" endtime="20230925 11:31:54.051"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${check}==True</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<msg timestamp="20230925 11:31:54.051" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20230925 11:31:54.051" endtime="20230925 11:31:54.052"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${index}</var>
+<arg>${index}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" starttime="20230925 11:31:54.052" endtime="20230925 11:31:54.052"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:54.019" endtime="20230925 11:31:54.052"/>
+</iter>
+<status status="PASS" starttime="20230925 11:31:54.019" endtime="20230925 11:31:54.052"/>
+</for>
+<msg timestamp="20230925 11:31:54.052" level="INFO">${index} = 1</msg>
+<status status="PASS" starttime="20230925 11:31:53.980" endtime="20230925 11:31:54.052"/>
+</kw>
+<kw name="Select With Dynamic Xpath For Click" library="Functions">
+<arg>${delete_products}</arg>
+<arg>${index}</arg>
+<kw name="Catenate" library="BuiltIn">
+<var>${exact_location}</var>
+<arg>${element}\[${index}]</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<msg timestamp="20230925 11:31:54.054" level="INFO">${exact_location} = (//span[@data-feature-id="delete"]/span/input)[1]</msg>
+<status status="PASS" starttime="20230925 11:31:54.054" endtime="20230925 11:31:54.054"/>
+</kw>
+<kw name="Click the Element" library="Functions">
+<arg>${exact_location}</arg>
+<arg>10</arg>
+<doc>This method make sure element is clicked</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>2</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230925 11:31:54.055" level="INFO">Clicking element '(//span[@data-feature-id="delete"]/span/input)[1]'.</msg>
+<status status="PASS" starttime="20230925 11:31:54.055" endtime="20230925 11:31:54.204"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:54.055" endtime="20230925 11:31:54.204"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:54.054" endtime="20230925 11:31:54.204"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:54.052" endtime="20230925 11:31:54.204"/>
+</kw>
+<status status="PASS" starttime="20230925 11:31:52.903" endtime="20230925 11:31:54.204"/>
+</kw>
+<status status="PASS" starttime="20230925 11:30:31.922" endtime="20230925 11:31:54.205"/>
+</test>
+<status status="PASS" starttime="20230925 11:30:31.559" endtime="20230925 11:31:54.207"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Amazon01">Amazon01</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
