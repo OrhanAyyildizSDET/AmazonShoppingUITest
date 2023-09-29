@@ -1,6 +1,8 @@
 *** Settings ***
-Library    Selenium2Library
-Resource   ../Keywords/AmazonKeywords.robot
+Library             Selenium2Library
+Resource            ../Keywords/AmazonKeywords.robot
+#Suite Setup
+#Suite Teardown      Close Browser
 
 *** Test Cases ***
 Tc01.User

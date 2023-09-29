@@ -8,7 +8,7 @@ Resource    ../Resources/AmazonShopPage.robot
 
 *** Keywords ***
 Open Browser and Amazon webpage
-	Functions.HeadlessChrome                              ${amazon_url}
+	Functions.Firefox Browser                             ${amazon_url}
 	Functions.Click Element on page                       ${amazon_cookies}
 	Sleep    3
 

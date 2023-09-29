@@ -28,6 +28,13 @@ HeadlessChrome
 	Maximize Browser Window
 	Capture Page Screenshot
 
+Firefox Browser
+	[Arguments]    ${url}
+	Create Webdriver    Firefox
+	Go To    ${url}
+	Maximize Browser Window
+	Capture Page Screenshot
+
 Click Element on page
     [Arguments]    ${element}
     ${status} =     Run keyword And Return Status    Wait Until Page Contains Element    ${element}    timeout=10   error=false
@@ -79,9 +86,9 @@ Infinity Scroll Down
 
 	[Arguments]    ${element}
 	FOR    ${i}   IN RANGE  6
-    ${check}=   Element Should Be Visible    ${element}
+    ${check}  Run Keyword And Return Status   Page Should Contain Element   ${element}
     Log To Console    ${check}
-    Exit For Loop If    ${check} != "None"
+    Exit For Loop If    ${check} != "False"
     Execute Javascript     window.scrollBy(0,1000)
     Scroll Element Into View    ${element}
     END
